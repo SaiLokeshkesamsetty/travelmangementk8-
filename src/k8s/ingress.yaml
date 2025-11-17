@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: travel-frontend-ingress
+  namespace: travel-frontend
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+    - host: <YOUR_HOSTNAME>
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: travel-frontend-svc
+                port:
+                  number: 80
+  # tls:
+  # - hosts:
+  #     - <YOUR_HOSTNAME>
+  #   secretName: travel-frontend-tls
